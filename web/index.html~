@@ -47,7 +47,7 @@
           </label>
         </div>
         <button class="bt.n btn-lg btn-primary btn-block" type="submit">Sign in</button>
-	<p>Or <a href="./signup.html">Sign Up</a></p>
+	<p>Or <a href="">Sign Up</a></p>
       </form>
 
     </div> <!-- /container -->
