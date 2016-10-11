@@ -1,6 +1,8 @@
 import pyrebase
 import pandas
 import numpy as np
+import math
+from scipy.stats import pearsonr
 
 config = {
   "apiKey": "AIzaSyDxa638yh3YX4AHAQAKnkg5wdFND5FNDvQ",
@@ -24,11 +26,18 @@ db = firebase.database()
 users = db.child("users").get().val()
 m = len(users)
 n = len(users[0]["ratings"])
-mat = np.empty((m,n)).astype(int)
+mat = np.zeros((m,n)).astype('int')
 for i in range(m):
     mat[i] = users[i]["ratings"]
 
+rowSums = mat.sum(axis=1)
+rowSquaredSums = np.square(mat).sum(axis=1)
+
 # takes in the index of each row (user)
 def pearson_correlation(x, y):
-    sumX = mat.sum()
-print(mat)
+    return (n * (mat[x] * mat[y]).sum() - mat[x].sum()*mat[y].sum()) / math.sqrt( ((n * np.square(mat[x]).sum()) - (mat[x].sum() ** 2)) * (n * np.square(mat[y]).sum() - (mat[y].sum() ** 2)) )
+
+print (mat)
+print (pearsonr(mat[0],mat[1]))
+print (pearsonr(mat[1],mat[2]))
+print (pearson_correlation(1,2))
