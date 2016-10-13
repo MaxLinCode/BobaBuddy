@@ -35,9 +35,30 @@ rowSquaredSums = np.square(mat).sum(axis=1)
 
 # takes in the index of each row (user)
 def pearson_correlation(x, y):
-    return (n * (mat[x] * mat[y]).sum() - mat[x].sum()*mat[y].sum()) / math.sqrt( ((n * np.square(mat[x]).sum()) - (mat[x].sum() ** 2)) * (n * np.square(mat[y]).sum() - (mat[y].sum() ** 2)) )
+    #return (n * (mat[x] * mat[y]).sum() - mat[x].sum()*mat[y].sum()) / math.sqrt( ((n * np.square(mat[x]).sum()) - (mat[x].sum() ** 2)) * (n * np.square(mat[y]).sum() - (mat[y].sum() ** 2)) )
+    sumX = 0
+    sumY = 0
+    sumProdXY = 0
+    sumX2 = 0
+    sumY2 = 0
+    for i in range(n):
+        # both users have to rate an item
+        a = mat[x][i]
+        b = mat[y][i]
+        if a != -1 and b != -1:
+            sumX += a
+            sumY += b
+            sumProdXY += a * b
+            sumX2 += a ** 2
+            sumY2 += b ** 2
+    r_den = math.sqrt( (n * sumX2 - sumX ** 2) * (n * sumY2 - sumY ** 2))
+    # both users have not rated anything
+    if r_den == 0:
+        return -10;
+    r_num = n * sumProdXY - sumX * sumY;
+    # print ('{} {} {} {} {}'.format(sumX, sumY, sumProdXY, sumX2, sumY2))
+    return r_num / r_den
 
-print (mat)
 print (pearsonr(mat[0],mat[1]))
 print (pearsonr(mat[1],mat[2]))
 print (pearson_correlation(1,2))
