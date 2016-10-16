@@ -1,4 +1,3 @@
-console.log("App.js is getting run");
 /**
  * FirebaseUI initialization to be used in a Single Page application context.
  */
@@ -21,11 +20,13 @@ var currentUid = null;
  * Displays the UI for a signed in user.
  */
 var handleSignedInUser = function(user) {
+
     currentUid = user.uid;
     document.getElementById('user-signed-in').style.display = 'block';
     document.getElementById('user-signed-out').style.display = 'none';
     document.getElementById('name').textContent = user.displayName;
     document.getElementById('email').textContent = user.email;
+
     if (user.photoURL) {
         document.getElementById('photo').src = user.photoURL;
         document.getElementById('photo').style.display = 'block';
@@ -33,19 +34,22 @@ var handleSignedInUser = function(user) {
         document.getElementById('photo').style.display = 'none';
     }
 
-    // object.values returns array like
-    db = database.get().val();
+    var usersRef = database.ref().child('users');
 
-    // dots are illegal
-    // dots replaced with commas
-    userEmail = user.email.replace(/./g, ',');
-    console.log(userEmail);
-    // check if user key doesn't exist
-    if (db.hasOwnProperty(userEmail)) {
-        console.log("America, fuck yeah!");
-        var userObject = {userEmail:[0,1,2,3,4,5,6]}
-        db.set(userObject);
-    }
+    usersRef.once('value').then(function(snapshot) {
+        // dots are illegal
+        // dots replaced with commas
+        var userEmail = user.email.replace('.', ',');
+        // check if user key doesn't exist
+        if (!snapshot.val().hasOwnProperty(userEmail)) {
+            // brackets indicate "computed property name"
+            var userObject = {
+                [userEmail]: [0, 0, 0, 0, 0, 0, 0]
+            }
+            usersRef.update(userObject);
+        }
+    });
+
 };
 
 
