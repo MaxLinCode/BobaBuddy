@@ -44,7 +44,7 @@ var handleSignedInUser = function(user) {
         if (!snapshot.val().hasOwnProperty(userEmail)) {
             // brackets indicate "computed property name"
             var userObject = {
-                [userEmail]: [0, 0, 0, 0, 0, 0, 0]
+                [userEmail]: [-1, -1, -1, -1, -1, -1, -1]
             }
             usersRef.update(userObject);
         }
