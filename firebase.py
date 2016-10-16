@@ -59,6 +59,27 @@ def pearson_correlation(x, y):
     # print ('{} {} {} {} {}'.format(sumX, sumY, sumProdXY, sumX2, sumY2))
     return r_num / r_den
 
+# returns a list of the 'k' most similar users
+# based on pearson similarity function
+# k = 3
+def similarUsersTo(userIndex,k):
+    similarUsers = [index][k]
+    for user in similarUsers:
+        user = 0
+
+    for i in range(m):
+        # compare everything except the user itself
+        if i != userIndex:
+            #do something here
+            
+
 print (pearsonr(mat[0],mat[1]))
 print (pearsonr(mat[1],mat[2]))
 print (pearson_correlation(1,2))
+
+
+
+
+
+
+
