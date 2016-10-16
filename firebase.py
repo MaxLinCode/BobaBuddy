@@ -19,7 +19,7 @@ data = {
     "asdf@gmail,com": [0,1,2,3,4,5,6],
     "test@gmail,com": [0,1,2,3,4,5,6]
 }
-db.set(data)
+db.child("users").set(data)
 ##### SET DATA ########
 # users = db.child("users").get().val()
 # m = len(users)
