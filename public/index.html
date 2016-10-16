@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!DOCTYPE html>
 <html>
 
@@ -50,3 +51,60 @@
 
 
 </html>
+=======
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-database.js"></script>
+    <!-- Leave out Storage -->
+    <!-- <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-storage.js"></script> -->
+    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.css" />
+    <link type="text/css" rel="stylesheet" href="styles.css" />
+    <script type="text/javascript">
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDxa638yh3YX4AHAQAKnkg5wdFND5FNDvQ",
+            authDomain: "boba-buddy.firebaseapp.com",
+            databaseURL: "https://boba-buddy.firebaseio.com",
+            storageBucket: "boba-buddy.appspot.com",
+            messagingSenderId: "1033578844883"
+        };
+        firebase.initializeApp(config);
+        // Get Reference to Firebase Database
+        var database = firebase.database();
+    </script>
+
+</head>
+
+<body>
+    <div id="main">
+        <div id="user-signed-in" class="hidden">
+            <div id="user-info">
+                <div id="photo-container">
+                    <img id="photo"></img>
+                </div>
+                <div id="name"></div>
+                <div id="email"></div>
+                <div class="clearfix"></div>
+            </div>
+            <p>
+                <button id="sign-out">Sign Out</button>
+            </p>
+        </div>
+
+        <div id="user-signed-out" class="hidden">
+            <div id="firebaseui-container"></div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+
+</html>
+>>>>>>> Stashed changes
