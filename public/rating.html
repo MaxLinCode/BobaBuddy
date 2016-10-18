@@ -45,6 +45,17 @@
 				<option value="Rose Milk">
 				<option value="Passion Green">
 			</datalist>
+			<script type="text/javascript">
+				var myteas = '';
+				firebase.database.ref().child('drinks').once('value').then(function(snapshot) 
+					myteas = snapshot.val();
+				});
+				var options = '';
+
+				options += '<option value="'+myteas[i]+'" />';
+
+				document.getElementById('teas').innerHTML = options;
+			</script>
 			<h2>Choose a rating</h2>
 			<span class="star-rating">
 				<input type="radio" name="rating" value="1"><i></i>
