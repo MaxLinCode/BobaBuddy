@@ -7,9 +7,6 @@
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/live/0.5/firebase-ui-auth.css" />
     <link type="text/css" rel="stylesheet" href="styles.css" />
     <script type="text/javascript">
         // Initialize Firebase
@@ -23,6 +20,16 @@
         firebase.initializeApp(config);
         // Get Reference to Firebase Database
         var database = firebase.database();
+
+        // redirect user if not logged in
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                // User is signed in.
+            } else {
+                // No user is signed in.
+                window.location.href = "../signin.html"
+            }
+        });
     </script>
 
 </head>
@@ -49,6 +56,5 @@
     </div>
     <script src="app.js"></script>
 </body>
-
 
 </html>
