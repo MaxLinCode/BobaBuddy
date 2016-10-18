@@ -41,20 +41,18 @@
 			<h2>Choose a drink</h2>
 			<input type="text" list="teas" name="myteas" />
 			<datalist id="teas">
-				<option value="Original Milk">
-				<option value="Rose Milk">
-				<option value="Passion Green">
 			</datalist>
 			<script type="text/javascript">
-				var myteas = '';
-				firebase.database.ref().child('drinks').once('value').then(function(snapshot) { 
-					myteas = snapshot.val();
+				firebase.database().ref().child('drinks').once('value').then(function(snapshot) {
+					var myteas = snapshot.val();
+					var options = '';
+					for (var i = 0; i < myteas.length; i++) {
+						options += '<option value="' + myteas[i] + '" />';
+					}
+					
+					document.getElementById('teas').innerHTML = options;
 				});
-				var options = '';
 
-				options += '<option value="'+myteas[i]+'" />';
-
-				document.getElementById('teas').innerHTML = options;
 			</script>
 			<h2>Choose a rating</h2>
 			<span class="star-rating">

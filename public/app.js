@@ -14,8 +14,6 @@ function submitRating() {
 var handleSignedInUser = function(user) {
 
     currentUid = user.uid;
-    document.getElementById('user-signed-in').style.display = 'block';
-    document.getElementById('user-signed-out').style.display = 'none';
     document.getElementById('name').textContent = user.displayName;
     document.getElementById('email').textContent = user.email;
 
@@ -49,9 +47,8 @@ var handleSignedInUser = function(user) {
  * Displays the UI for a signed out user.
  */
 var handleSignedOutUser = function() {
-    document.getElementById('user-signed-in').style.display = 'none';
-    document.getElementById('user-signed-out').style.display = 'block';
-    ui.start('#firebaseui-container', uiConfig);
+    // redirects to sign in
+    window.location.href="../signin.html"
 };
 
 // Listen to change in auth state so it displays the correct UI for when
@@ -73,6 +70,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 var initApp = function() {
     document.getElementById('sign-out').addEventListener('click', function() {
         firebase.auth().signOut();
+    });
+
+    document.getElementById('rate').addEventListener('click', function() {
+        window.location.href="../rating.html"
     });
 
 };
