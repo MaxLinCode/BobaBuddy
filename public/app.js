@@ -16,6 +16,17 @@ var ui = new firebaseui.auth.AuthUI(firebase.auth());
 // Keep track of the currently signed in user.
 var currentUid = null;
 
+
+/**
+ * Submit Rating
+ */
+function submitRating() {
+	var form = document.getElementById("form1");
+	console.log(form.myteas.value);
+	console.log(form.rating.value);
+}
+
+
 /**
  * Displays the UI for a signed in user.
  */
@@ -71,8 +82,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     if (user && user.uid == currentUid) {
         return;
     }
-    //document.getElementById('loading').style.display = 'none';
-    //document.getElementById('loaded').style.display = 'block';
+
     user ? handleSignedInUser(user) : handleSignedOutUser();
 });
 

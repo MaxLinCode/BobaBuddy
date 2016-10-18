@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Boba Buddy Rating</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="./main.css" />
-		<script src="rate_submit.js"></script>
-	</head>
-	<body>
-		<center>
-		<form  id="form1" target="hiddenFrame">
+
+<head>
+	<title>Boba Buddy Rating</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="./styles.css" />
+	<script src="rate_submit.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.4.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyDxa638yh3YX4AHAQAKnkg5wdFND5FNDvQ",
+			authDomain: "boba-buddy.firebaseapp.com",
+			databaseURL: "https://boba-buddy.firebaseio.com",
+			storageBucket: "boba-buddy.appspot.com",
+			messagingSenderId: "1033578844883"
+		};
+		firebase.initializeApp(config);
+
+		// redirect user if not logged in
+		firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+				// User is signed in.
+			} else {
+				// No user is signed in.
+				window.location.href = "../signin.html"
+			}
+		});
+	</script>
+</head>
+
+<body>
+	<center>
+		<form id="form1" target="hiddenFrame">
 			<h2>Choose a drink</h2>
 			<input type="text" list="teas" name="myteas" />
 			<datalist id="teas">
@@ -25,10 +53,12 @@
 				<input type="radio" name="rating" value="4"><i></i>
 				<input type="radio" name="rating" value="5"><i></i>
 			</span>
-			</br></br>
-			<button onclick="test()" type="submit">Submit</button>
+			</br>
+			</br>
+			<button onclick="submitRating()" type="submit">Submit</button>
 		</form>
 		<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
-		</center>
-	</body>
+	</center>
+</body>
+
 </html>
