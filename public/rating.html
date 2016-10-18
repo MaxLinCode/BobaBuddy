@@ -5,10 +5,11 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="./main.css" />
+		<script src="rate_submit.js"></script>
 	</head>
 	<body>
 		<center>
-		<form action="demo_form.asp" target="hiddenFrame">
+		<form  id="form1" target="hiddenFrame">
 			<h2>Choose a drink</h2>
 			<input type="text" list="teas" name="myteas" />
 			<datalist id="teas">
@@ -25,7 +26,7 @@
 				<input type="radio" name="rating" value="5"><i></i>
 			</span>
 			</br></br>
-			<input type="submit" value="Submit">
+			<button onclick="test()" type="submit">Submit</button>
 		</form>
 		<iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe>
 		</center>
