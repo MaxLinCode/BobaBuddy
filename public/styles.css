@@ -58,7 +58,7 @@ body {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: url(./assets/bobaicon.png);
+  background: url(./assets/bobaiconblank.png);
   background-size: contain;
 }
 .star-rating i {
@@ -69,7 +69,7 @@ body {
   height: 100%;
   width: 20%;
   z-index: 1;
-  background: url(./assets/bobaiconblank.png);
+  background: url(./assets/bobaicon.png);
   background-size: contain;
 }
 .star-rating input {

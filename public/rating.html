@@ -47,7 +47,7 @@
 			</datalist>
 			<script type="text/javascript">
 				var myteas = '';
-				firebase.database.ref().child('drinks').once('value').then(function(snapshot) 
+				firebase.database.ref().child('drinks').once('value').then(function(snapshot) { 
 					myteas = snapshot.val();
 				});
 				var options = '';
