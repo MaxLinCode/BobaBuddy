@@ -24,7 +24,7 @@ var handleSignedInUser = function(user) {
         document.getElementById('photo').style.display = 'none';
     }
 
-    var usersRef = database.ref().child('users');
+    var usersRef = database.ref('users');
 
     usersRef.once('value').then(function(snapshot) {
         // dots are illegal
