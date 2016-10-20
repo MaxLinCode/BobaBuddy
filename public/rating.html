@@ -42,7 +42,6 @@
 			<input type="text" list="teas" name="myteas" />
 			<datalist id="teas">
 			</datalist>
-
 			<script type="text/javascript">
 				firebase.database().ref('drinks').once('value').then(function(snapshot) {
 					var myteas = snapshot.val();
