@@ -47,9 +47,9 @@
 					var myteas = snapshot.val();
 					var options = '';
 					for (var i = 0; i < myteas.length; i++) {
-						options += '<option value="' + myteas[i] + '">' + i + '<option/>';
+						options += '<option data-id=' + i + ' value="' + myteas[i] + '"><option/>';
 					}
-					
+
 					document.getElementById('teas').innerHTML = options;
 				});
 
