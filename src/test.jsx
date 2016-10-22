@@ -1,7 +1,7 @@
-import ReactDOM from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import Autosuggest from 'react-autosuggest';
-console.log("test.jsx")
+
 // Imagine you have a list of languages that you'd like to autosuggest.
 const languages = [
   {
@@ -49,29 +49,28 @@ class Example extends React.Component {
       value: '',
       suggestions: []
     };
-  }
 
-  onChange = (event, { newValue }) => {
-    this.setState({
-      value: newValue
-    });
+  this.onChange = (event, { newValue }) => {
+    this.setState({value: newValue});
   };
-
-  // Autosuggest will call this function every time you need to update suggestions.
+  
+// Autosuggest will call this function every time you need to update suggestions.
   // You already implemented this logic above, so just use it.
-  onSuggestionsFetchRequested = ({ value }) => {
+  this.onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
       suggestions: getSuggestions(value)
     });
   };
 
   // Autosuggest will call this function every time you need to clear suggestions.
-  onSuggestionsClearRequested = () => {
+  this.onSuggestionsClearRequested = () => {
     this.setState({
       suggestions: []
     });
   };
-
+    
+  }
+  
   render() {
     const { value, suggestions } = this.state;
 
@@ -97,6 +96,6 @@ class Example extends React.Component {
 }
 
 ReactDOM.render(
-  new Example(),
+  <Example />,
   document.getElementById('example')
 );
