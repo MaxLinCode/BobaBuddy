@@ -14,12 +14,12 @@ config = {
 
 firebase = pyrebase.initialize_app(config)
 db = firebase.database()
-data = {
-    "KevinXia@gmail,com": [0,1,2,3,4,5,6],
-    "asdf@gmail,com": [0,1,2,3,4,5,6],
-    "test@gmail,com": [0,1,2,3,4,5,6]
-}
-db.child("users").update(data)
+# data = {
+#     "KevinXia@gmail,com": [0,1,2,3,4,5,6],
+#     "asdf@gmail,com": [0,1,2,3,4,5,6],
+#     "test@gmail,com": [0,1,2,3,4,5,6]
+# }
+# db.child("users").update(data)
 ##### SET DATA ########
 # users = db.child("users").get().val()
 # m = len(users)

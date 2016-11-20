@@ -7,3 +7,6 @@
 *.swo
 # Ignore node_modules directory
 node_modules/
+
+# Ignore generated bundle.js
+bundle.js
